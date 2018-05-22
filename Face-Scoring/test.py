@@ -112,14 +112,14 @@ with tf.Session() as sess:
     list = os.listdir("./test_resize/")
     # print(list)
     print(len(list))
-    input_xs = []
     for image in list:
+        input_xs = []
         img = Image.open("./test_resize/"+image)
         img_ndarray = numpy.asarray(img,dtype='float32')
         img_ndarray = numpy.reshape(img_ndarray,[128,128,3])
         print(type(img_ndarray.tolist()))
         input_xs.append(img_ndarray.tolist())
-        input_xs = numpy.asarray(input_xs)
+        # input_xs = numpy.asarray(input_xs)
         prediction_test = sess.run(pred_result,feed_dict={x:input_xs,keep_prob:1})
         print(prediction_test)
 
